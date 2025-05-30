@@ -1,0 +1,64 @@
+{
+  "name": "seba-mobile-app",
+  "version": 2,
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/node"
+    }
+  ],
+  "buildCommand": "npm run build:web",
+  "outputDirectory": "dist",
+  "devCommand": "npm run web",
+  "installCommand": "npm ci",
+  "framework": "react",
+  "regions": ["all"],
+  "routes": [
+    {
+      "src": "/static/(.*)",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      }
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/index.html",
+      "headers": [
+        {
+          "key": "cache-control",
+          "value": "public, max-age=0, must-revalidate"
+        }
+      ]
+    },
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        }
+      ]
+    }
+  ],
+  "env": {
+    "NODE_VERSION": "18"
+  },
+  "functions": {
+    "app/**": {
+      "runtime": "nodejs18.x"
+    }
+  }
+}

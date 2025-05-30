@@ -1,24 +1,59 @@
 {
   "expo": {
-    "name": "Seba",
+    "name": "Seba - সেবা",
     "slug": "seba-app",
     "version": "1.0.0",
+    "description": "Bangladeshi Government Services Mobile App - Access all government services in one place",
+    "owner": "punam06",
+    "privacy": "public",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
     "scheme": "seba",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
+    "splash": {
+      "image": "./assets/images/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#1e40af"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.punam06.sebaapp",
+      "buildNumber": "1"
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/icon.png",
+        "backgroundColor": "#1e40af"
+      },
+      "package": "com.punam06.sebaapp",
+      "versionCode": 1
     },
     "web": {
       "bundler": "metro",
       "output": "single",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/favicon.png",
+      "name": "Seba - সেবা",
+      "shortName": "Seba",
+      "lang": "en",
+      "scope": "/",
+      "themeColor": "#1e40af",
+      "backgroundColor": "#ffffff",
+      "display": "standalone",
+      "orientation": "portrait",
+      "startUrl": "/"
     },
     "plugins": ["expo-router", "expo-font", "expo-web-browser"],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "eas": {
+        "projectId": "seba-mobile-app"
+      }
     }
   }
 }
