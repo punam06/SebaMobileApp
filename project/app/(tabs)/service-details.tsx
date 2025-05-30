@@ -13,12 +13,19 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ArrowLeft, Clock, DollarSign, FileText, ChevronRight } from 'lucide-react-native';
 import { LinearGradient } from 'expo-linear-gradient';
-import { router } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import * as Haptics from 'expo-haptics';
 
 export default function ServiceDetailsScreen() {
+  const params = useLocalSearchParams();
   const fadeAnim = useRef(new Animated.Value(0)).current;
   const slideAnim = useRef(new Animated.Value(30)).current;
+
+  // Extract service data from params with defaults
+  const serviceName = params.name as string || 'জাতীয় পরিচয়পত্র';
+  const serviceDescription = params.description as string || 'NID সংশোধন ও নবায়ন';
+  const serviceIcon = params.icon as string || '🆔';
+  const serviceBgColor = params.bgColor as string || '#EFF6FF';
 
   useEffect(() => {
     Animated.parallel([
@@ -105,7 +112,7 @@ export default function ServiceDetailsScreen() {
           >
             <ArrowLeft size={24} color="#FFFFFF" />
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>জাতীয় পরিচয়পত্র</Text>
+          <Text style={styles.headerTitle}>{serviceName}</Text>
           <View style={styles.headerPlaceholder} />
         </LinearGradient>
       </View>
@@ -122,10 +129,10 @@ export default function ServiceDetailsScreen() {
         >
           {/* Service Info Card */}
           <View style={styles.serviceInfoCard}>
-            <Text style={styles.serviceIcon}>🆔</Text>
-            <Text style={styles.serviceTitle}>জাতীয় পরিচয়পত্র সংশোধন</Text>
+            <Text style={styles.serviceIcon}>{serviceIcon}</Text>
+            <Text style={styles.serviceTitle}>{serviceName}</Text>
             <Text style={styles.serviceDescription}>
-              আপনার জাতীয় পরিচয়পত্রে কোন ভুল তথ্য থাকলে এখানে সংশোধনের জন্য আবেদন করুন।
+              {serviceDescription} - আপনার প্রয়োজনীয় সেবা পেতে এখানে আবেদন করুন।
             </Text>
             
             <View style={styles.serviceMetaContainer}>

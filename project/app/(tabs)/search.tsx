@@ -103,7 +103,16 @@ export default function SearchScreen() {
     if (Platform.OS !== 'web') {
       Haptics.impactAsync(Haptics.ImpactFeedbackStyle.Light);
     }
-    router.push('/service-details');
+    router.push({
+      pathname: '/service-details',
+      params: {
+        id: String(service.id),
+        name: service.name,
+        description: service.description,
+        icon: '🆔', // Default icon for search results
+        bgColor: '#EFF6FF'
+      }
+    });
   };
 
   const handleRecentSearchPress = (search: string) => {

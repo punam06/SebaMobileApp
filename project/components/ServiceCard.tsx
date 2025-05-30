@@ -13,6 +13,7 @@ import * as Haptics from 'expo-haptics';
 import { router } from 'expo-router';
 
 interface ServiceCardProps {
+  id?: number | string;
   name: string;
   description: string;
   icon: ImageSourcePropType | string;
@@ -21,6 +22,7 @@ interface ServiceCardProps {
 }
 
 const ServiceCard: React.FC<ServiceCardProps> = ({ 
+  id,
   name, 
   description, 
   icon, 
@@ -35,8 +37,17 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
     if (onPress) {
       onPress();
     } else {
-      // Navigate to service details screen
-      router.push('/service-details');
+      // Navigate to service details screen with service data
+      router.push({
+        pathname: '/service-details',
+        params: {
+          id: id ? String(id) : '',
+          name: name,
+          description: description,
+          icon: typeof icon === 'string' ? icon : '',
+          bgColor: bgColor
+        }
+      });
     }
   };
 

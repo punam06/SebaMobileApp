@@ -152,6 +152,16 @@ export default function HomeScreen() {
                 <TouchableOpacity 
                   key={service.id} 
                   style={[styles.quickServiceItem, { backgroundColor: service.bgColor }]}
+                  onPress={() => router.push({
+                    pathname: '/service-details',
+                    params: {
+                      id: String(service.id),
+                      name: service.name,
+                      description: 'দ্রুত সেবা',
+                      icon: service.icon,
+                      bgColor: service.bgColor
+                    }
+                  })}
                 >
                   <Text style={styles.quickServiceIcon}>{service.icon}</Text>
                   <Text style={[styles.quickServiceText, { color: service.color }]}>
@@ -159,7 +169,10 @@ export default function HomeScreen() {
                   </Text>
                 </TouchableOpacity>
               ))}
-              <TouchableOpacity style={styles.viewMoreButton}>
+              <TouchableOpacity 
+                style={styles.viewMoreButton}
+                onPress={() => router.push('/services')}
+              >
                 <MoreHorizontal size={24} color="#64748B" />
                 <Text style={styles.viewMoreText}>আরও</Text>
               </TouchableOpacity>
@@ -173,13 +186,17 @@ export default function HomeScreen() {
               {services.map(service => (
                 <ServiceCard 
                   key={service.id} 
+                  id={service.id}
                   name={service.name} 
                   description={service.description}
                   icon={service.icon}
                   bgColor={service.bgColor}
                 />
               ))}
-              <TouchableOpacity style={styles.viewAllServicesButton}>
+              <TouchableOpacity 
+                style={styles.viewAllServicesButton}
+                onPress={() => router.push('/services')}
+              >
                 <Text style={styles.viewAllServicesText}>সকল সেবা দেখুন</Text>
                 <ArrowRight size={16} color="#1E40AF" />
               </TouchableOpacity>
