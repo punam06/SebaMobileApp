@@ -130,12 +130,26 @@ export default function HomeScreen() {
                 <Text style={styles.statusEmoji}>📄</Text>
               </View>
               <View style={styles.statusInfo}>
-                <Text style={styles.statusTitle}>পাসপোর্ট নবায়ন</Text>
-                <Text style={styles.statusDate}>আবেদন: ১০ ডিসেম্বর, ২০২৪</Text>
+                <Text style={styles.statusTitle}>জন্ম সনদ নবায়ন</Text>
+                <Text style={styles.statusDate}>৫ দিন আগে</Text>
                 <View style={styles.progressBar}>
-                  <View style={[styles.progressFill, { width: '70%' }]} />
+                  <View style={[styles.progressFill, { width: '50%' }]} />
                 </View>
-                <Text style={styles.statusLabel}>প্রক্রিয়াধীন (৭০%)</Text>
+                <Text style={styles.statusLabel}>প্রক্রিয়াধীন (৫০%)</Text>
+              </View>
+            </TouchableOpacity>
+
+            <TouchableOpacity style={[styles.statusCard, { marginTop: 12 }]}>
+              <View style={styles.statusIconContainer}>
+                <Text style={styles.statusEmoji}>📄</Text>
+              </View>
+              <View style={styles.statusInfo}>
+                <Text style={styles.statusTitle}>পাসপোর্ট নবায়ন</Text>
+                <Text style={styles.statusDate}>১০ দিন আগে</Text>
+                <View style={styles.progressBar}>
+                  <View style={[styles.progressFill, { width: '30%' }]} />
+                </View>
+                <Text style={styles.statusLabel}>প্রক্রিয়াধীন (৩০%)</Text>
               </View>
             </TouchableOpacity>
           </View>
